@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "bootstrap/dist/css/bootstrap.min.css"
 import Navbar from "./components/navbar/Navbar";
-import ResumoCarrinho from "./components/ResumoCarrinho/ResumoCarrinho";
+import BootstrapClient from "./components/BootstrapClient";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,11 +18,11 @@ export default function RootLayout({
       <html lang="en">
         
         <body>
-            <Navbar/>
+            
             <main>
-              <div className="container p-5">
+                <Navbar/>
                 {children}
-              </div>
+                <BootstrapClient/>
             </main>
         </body>
       </html>
