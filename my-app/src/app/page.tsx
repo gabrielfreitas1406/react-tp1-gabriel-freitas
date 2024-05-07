@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListagemProdutos from "./components/listagemProdutos/ListagemProdutos";
 import ResumoCarrinho from "./components/ResumoCarrinho/ResumoCarrinho";
 import { mockProdutos } from "./mocks/produto";
@@ -13,7 +13,24 @@ interface adicionarAoCarrinhoProps{
 }
 
 export default function Home() {
-  const produtos = mockProdutos;
+  //const produtos = mockProdutos;
+  const [produtos, setProdutos] = React.useState<Produto[]|null>(null);
+
+  useEffect(()=>{
+    const fetchData = async () =>{
+      try{
+        const response  = await fetch(
+          "https://ranekapi.origamid.dev/json/api/produto"
+        );
+        const json = await response.json();
+        setProdutos(json);
+      } catch(Error){
+        console.log("Não é para imprimir aqui, mas para criar uma interface!!!");
+        setProdutos(null);
+      }
+    }
+    fetchData();
+  }, []);
 
   const [precoTotal, setPrecoTotal] = React.useState<number>(0);
   const [quantidadeItensTotal, setQuantidadeTotalItens] = React.useState<number>(0);

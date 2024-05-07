@@ -18,11 +18,12 @@ export default function RootLayout({
       <html lang="en">
         
         <body>
-            
+            <Navbar/>
             <main>
-                <Navbar/>
+              <div className="container p-5">
                 {children}
                 <BootstrapClient/>
+              </div>
             </main>
         </body>
       </html>
