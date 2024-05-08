@@ -1,6 +1,25 @@
+"use client"
+
+import { usePathname } from "next/navigation"
 
 export  default function Navbar(){
-    return (
+    const pathname = usePathname();
+
+    
+    if (pathname === "/login"){
+        return (
+          <>
+          </>
+        );
+    }
+    else if (pathname === "/cadastro"){
+      return (
+        <>
+        </>
+      );
+    }
+    else{
+      return (
         <nav className="navbar navbar-expand-md bg-light border-bottom border-body sticky-top">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
@@ -36,4 +55,6 @@ export  default function Navbar(){
         </div>
       </nav>
     )
+    }
+    
 }

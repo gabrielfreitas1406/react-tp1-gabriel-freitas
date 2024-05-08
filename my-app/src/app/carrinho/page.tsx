@@ -4,7 +4,7 @@ import ListagemCarrinho from "../components/ListagemCarrinho/ListagemCarrinho";
 import { mockItensCarrinho } from "../mocks/itensCarrinho";
 import React from "react";
 
-export default function carrinho(){
+export default function Carrinho(){
 
     const [itensCarrinho, setCarrinho] = React.useState(mockItensCarrinho);
 

@@ -14,7 +14,7 @@ interface adicionarAoCarrinhoProps{
 
 export default function Home() {
   //const produtos = mockProdutos;
-  const [produtos, setProdutos] = React.useState<Produto[]|null>(null);
+  const [produtos, setProdutos] = useState<Produto[]|null>(null);
 
   useEffect(()=>{
     const fetchData = async () =>{
@@ -32,8 +32,8 @@ export default function Home() {
     fetchData();
   }, []);
 
-  const [precoTotal, setPrecoTotal] = React.useState<number>(0);
-  const [quantidadeItensTotal, setQuantidadeTotalItens] = React.useState<number>(0);
+  const [precoTotal, setPrecoTotal] = useState<number>(0);
+  const [quantidadeItensTotal, setQuantidadeTotalItens] = useState<number>(0);
 
   const adicionarAoCarrinho = (produto:Produto): void =>{
     setQuantidadeTotalItens(quantidadeItensTotal + 1);
