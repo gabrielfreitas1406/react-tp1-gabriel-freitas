@@ -5,6 +5,7 @@ import ListagemProdutos from "./components/listagemProdutos/ListagemProdutos";
 import ResumoCarrinho from "./components/ResumoCarrinho/ResumoCarrinho";
 import { mockProdutos } from "./mocks/produto";
 import React from "react";
+import api from "./services/api";
 
 interface adicionarAoCarrinhoProps{
   precoTotal: number,
@@ -13,11 +14,11 @@ interface adicionarAoCarrinhoProps{
 }
 
 export default function Home() {
-  //const produtos = mockProdutos;
   const [produtos, setProdutos] = useState<Produto[]|null>(null);
 
   useEffect(()=>{
-    const fetchData = async () =>{
+    /*=========== UTILIZANDO O FETCH DE ACORDO COM A PARTE DO TRABALHO 2: Hooks do Next e rotas dinâmicas: Vamos praticar? ===========*/
+    /*const fetchData = async () =>{
       try{
         const response  = await fetch(
           "https://ranekapi.origamid.dev/json/api/produto"
@@ -29,12 +30,18 @@ export default function Home() {
         setProdutos(null);
       }
     }
-    fetchData();
+    fetchData();*/
+    
+    /*=========== UTILIZANDO CONFORME A  React Query e Axios: Vamos praticar? ===========*/
+    api.get("/produto").then((response)=>{
+      setProdutos(response.data);
+    });
+    
   }, []);
 
   const [precoTotal, setPrecoTotal] = useState<number>(0);
   const [quantidadeItensTotal, setQuantidadeTotalItens] = useState<number>(0);
-
+  
   const adicionarAoCarrinho = (produto:Produto): void =>{
     setQuantidadeTotalItens(quantidadeItensTotal + 1);
     setPrecoTotal(precoTotal + Number(produto.preco));
@@ -43,7 +50,7 @@ export default function Home() {
     
     <>
       <ResumoCarrinho quantidadeItensTotal={quantidadeItensTotal} precoTotal={precoTotal}/>
-      <ListagemProdutos produtos={produtos} adicionarAoCarrinho={adicionarAoCarrinho}/**/ />
+      <ListagemProdutos produtos={produtos} adicionarAoCarrinho={adicionarAoCarrinho}/>
      </>
   );
 }
