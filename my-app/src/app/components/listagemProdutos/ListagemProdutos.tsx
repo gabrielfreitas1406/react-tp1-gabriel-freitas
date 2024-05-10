@@ -14,7 +14,7 @@ export default function ListagemProdutos ({produtos, adicionarAoCarrinho}:ILista
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
                         {produtos.map((produto)=>{
                             return(
-                                    <div className="col" key={String(produto.id)}>
+                                    <div className="col" key={(produto.id)}>
                                         <CardProduto produto={produto} adicionarAoCarrinho={adicionarAoCarrinho}/>
                                     </div>
                                 )

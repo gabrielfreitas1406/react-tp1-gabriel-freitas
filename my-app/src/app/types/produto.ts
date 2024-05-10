@@ -1,14 +1,14 @@
 interface Foto{
-    titulo: String;
-    src: String;
+    titulo: string;
+    src: string;
 }
 
 interface Produto{
-    id: String,
+    id: string,
     fotos: Foto[],
-    nome: String,
-    preco: String,
-    descricao: String,
-    vendido: String,
-    usuario_id: String
+    nome: string,
+    preco: string,
+    descricao: string,
+    vendido: string,
+    usuario_id: string
 }
