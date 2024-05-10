@@ -25,8 +25,13 @@ export default function Carrinho(){
     
      return(
         <>
-            <ListagemCarrinho itensCarrinho={itensCarrinho} removerItemDoCarrinho={removerItemDoCarrinho}/>
-            <ResumoCarrinho quantidadeItensTotal={itensCarrinho.length} precoTotal={calcularTotal()}/>
+        <main>
+            <div className="container p-5">
+                <ListagemCarrinho itensCarrinho={itensCarrinho} removerItemDoCarrinho={removerItemDoCarrinho}/>
+                <ResumoCarrinho quantidadeItensTotal={itensCarrinho.length} precoTotal={calcularTotal()}/>
+            </div>
+        </main>
+            
         </>
      )
 }

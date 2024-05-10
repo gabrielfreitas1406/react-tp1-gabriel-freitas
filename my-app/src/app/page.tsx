@@ -49,8 +49,12 @@ export default function Home() {
   return (
     
     <>
-      <ResumoCarrinho quantidadeItensTotal={quantidadeItensTotal} precoTotal={precoTotal}/>
-      <ListagemProdutos produtos={produtos} adicionarAoCarrinho={adicionarAoCarrinho}/>
+    <main>
+      <div className="container p-5">
+        <ResumoCarrinho quantidadeItensTotal={quantidadeItensTotal} precoTotal={precoTotal}/>
+        <ListagemProdutos produtos={produtos} adicionarAoCarrinho={adicionarAoCarrinho}/>
+      </div>
+    </main>
      </>
   );
 }
