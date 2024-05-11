@@ -17,7 +17,12 @@ export default function ItemCarrinho({itemCarrinho, removerItemDoCarrinho}: Item
         <tr key={String(itemCarrinho.id)}>
                 <td>{itemCarrinho.nome}</td>
                 <td>R$ {itemCarrinho.preco.toFixed(2)}</td>
-                <td>{String(itemCarrinho.quantidade)}</td>
+                <td>
+                <button className="btn btn-secondary btn-sm me-2">-</button>
+                {String(itemCarrinho.quantidade)}
+                <button className="btn btn-secondary btn-sm ms-2">+</button>
+                </td>
+                
                 <td>R$ {valorTotalProduto(itemCarrinho.preco, itemCarrinho.quantidade).toFixed(2)}</td>
                 <td>
                 <button className="btn btn-danger btn-sm" onClick={()=>clickRemoverDoCarrinho(itemCarrinho.id)}>
