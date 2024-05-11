@@ -1,9 +1,10 @@
 interface ItemCarrinhoProps{
     itemCarrinho: ItemCarrinho,
-    removerItemDoCarrinho: Function
+    removerItemDoCarrinho: Function,
+    dispatch: React.Dispatch<CarrinhoAction>
 }
 
-export default function ItemCarrinho({itemCarrinho, removerItemDoCarrinho}: ItemCarrinhoProps){
+export default function ItemCarrinho({itemCarrinho, removerItemDoCarrinho, dispatch}: ItemCarrinhoProps){
     const valorTotalProduto = (
         precoUnitario: number,
         quantidade: number
@@ -18,14 +19,14 @@ export default function ItemCarrinho({itemCarrinho, removerItemDoCarrinho}: Item
                 <td>{itemCarrinho.nome}</td>
                 <td>R$ {itemCarrinho.preco.toFixed(2)}</td>
                 <td>
-                <button className="btn btn-secondary btn-sm me-2">-</button>
+                <button className="btn btn-secondary btn-sm me-2" onClick={()=>dispatch({type: "reduzir_qtd", id: itemCarrinho.id})}>-</button>
                 {String(itemCarrinho.quantidade)}
-                <button className="btn btn-secondary btn-sm ms-2">+</button>
+                <button className="btn btn-secondary btn-sm ms-2" onClick={()=>dispatch({type: "aumentar_qtd", id: itemCarrinho.id})}>+</button>
                 </td>
                 
                 <td>R$ {valorTotalProduto(itemCarrinho.preco, itemCarrinho.quantidade).toFixed(2)}</td>
                 <td>
-                <button className="btn btn-danger btn-sm" onClick={()=>clickRemoverDoCarrinho(itemCarrinho.id)}>
+                <button className="btn btn-danger btn-sm" onClick={()=>dispatch({type: "remover", id: itemCarrinho.id})}>
                     Remover
                 </button>
             </td>

@@ -2,32 +2,50 @@
 import ResumoCarrinho from "../components/ResumoCarrinho/ResumoCarrinho";
 import ListagemCarrinho from "../components/ListagemCarrinho/ListagemCarrinho";
 import { mockItensCarrinho } from "../mocks/itensCarrinho";
-import React from "react";
+import React, { act } from "react";
+import { useReducer } from "react";
+
+function reducer(state: StateCarrinho, action: CarrinhoAction) {
+    switch(action.type){
+        case("aumentar_qtd"):
+            return (state.map((itemCarrinho)=>{
+                if (itemCarrinho.id === action.id) return {...itemCarrinho, quantidade: itemCarrinho.quantidade+1}
+                return (itemCarrinho);
+            }));
+        case("reduzir_qtd"):
+            return (state.map((itemCarrinho)=>{
+                if (itemCarrinho.id === action.id) return {...itemCarrinho, quantidade: itemCarrinho.quantidade-1}
+                return (itemCarrinho);
+            }));
+        case("remover"):
+            return  state.filter((itemCarrinho) => itemCarrinho.id !== action.id);
+        default:
+            throw new Error();
+    }
+}
 
 export default function Carrinho(){
 
-    const [itensCarrinho, setCarrinho] = React.useState(mockItensCarrinho);
+    //const [itensCarrinho, setCarrinho] = React.useState(mockItensCarrinho);
 
-    //const [precoTotal, setPrecoTotal] = React.useState<number>(0);
-    //const [quantidadeItensTotal, setQuantidadeTotalItens] = React.useState<number>(0);
-  
+    /* ======================= Trabalho 1 de Gerenciamento de Estados: useReducer: Vamos praticar? =======================*/
+    
+    const [itensCarrinho, dispatch] = useReducer(reducer, mockItensCarrinho);
+
+    
+    function calcularTotal(): number {
+        return itensCarrinho.reduce((total, item) => total + item.preco * item.quantidade, 0);
+    }
+
     const removerItemDoCarrinho = (id: string) => {
-        setCarrinho(prevItensCarrinho => prevItensCarrinho.filter(item => item.id !== id));
+        dispatch({ type: "remover", id });
     };
 
-    function calcularTotal(): number {
-        let total = 0;
-        for (const item of itensCarrinho) {
-            total += item.preco * item.quantidade;
-        }
-        return total;
-    }
-    
      return(
         <>
         <main>
             <div className="container p-5">
-                <ListagemCarrinho itensCarrinho={itensCarrinho} removerItemDoCarrinho={removerItemDoCarrinho}/>
+                <ListagemCarrinho itensCarrinho={itensCarrinho} removerItemDoCarrinho={removerItemDoCarrinho} dispatch={dispatch}/>
                 <ResumoCarrinho quantidadeItensTotal={itensCarrinho.length} precoTotal={calcularTotal()}/>
             </div>
         </main>

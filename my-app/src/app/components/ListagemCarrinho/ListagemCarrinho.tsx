@@ -5,10 +5,11 @@ import ItemCarrinho from "../ItemCarrinho/ItemCarrinnho";
 
 interface IListagemCarrinho{
   itensCarrinho: ItemCarrinho[],
-  removerItemDoCarrinho: Function
+  removerItemDoCarrinho: Function,
+  dispatch: React.Dispatch<CarrinhoAction>
 }
 
-export default function ListagemCarrinho({itensCarrinho, removerItemDoCarrinho}: IListagemCarrinho) {
+export default function ListagemCarrinho({itensCarrinho, removerItemDoCarrinho, dispatch}: IListagemCarrinho) {
 
   return (
     <>
@@ -34,7 +35,7 @@ export default function ListagemCarrinho({itensCarrinho, removerItemDoCarrinho}:
                   <tbody>
                     {itensCarrinho.map((itemCarrinho)=>{
                       return(
-                        <ItemCarrinho itemCarrinho={itemCarrinho} removerItemDoCarrinho={removerItemDoCarrinho}/>
+                        <ItemCarrinho itemCarrinho={itemCarrinho} removerItemDoCarrinho={removerItemDoCarrinho} dispatch={dispatch}/>
                       )
                     })}
                   </tbody>

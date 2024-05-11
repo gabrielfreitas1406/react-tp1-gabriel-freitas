@@ -21,12 +21,10 @@ export default function RootLayout({
         <body>
           <ReactQueryClientProvider>
               <Navbar/>
-              <main>
-                <div className="container p-5">
+        
                   {children}
                   <BootstrapClient/>
-                </div>
-              </main>
+              
             </ReactQueryClientProvider>
         </body>
       </html>
