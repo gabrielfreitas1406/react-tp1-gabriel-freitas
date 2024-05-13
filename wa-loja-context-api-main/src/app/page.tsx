@@ -19,8 +19,6 @@ export default function App() {
       <div className="container p-5">
         <ListagemProdutos
           produtos={produtos}
-          favoritos={favoritos}
-          setFavoritos={setFavoritos}
         />
       </div>
     </main>

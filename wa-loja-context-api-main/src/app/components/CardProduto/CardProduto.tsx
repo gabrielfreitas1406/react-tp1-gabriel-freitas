@@ -1,19 +1,22 @@
 import Image from "next/image";
+import { useContext } from "react";
+import { Favoritos_contexto } from "@/app/page";
 
 interface CardProdutoProps {
   produto: Produto;
-  favoritos: Produto[];
-  setFavoritos: React.Dispatch<React.SetStateAction<Produto[]>>;
 }
 
 export default function CardProduto({
-  produto,
-  favoritos,
-  setFavoritos,
+  produto
 }: CardProdutoProps) {
+
+  const  { favoritos, setFavoritos } = useContext(Favoritos_contexto);
+
+
   const adicionarAosFavoritos = (produto: Produto) => {
     setFavoritos((favoritos) => [...favoritos, produto]);
   };
+
 
   const ehFavorito = favoritos.some((item) => item.id === produto.id);
 

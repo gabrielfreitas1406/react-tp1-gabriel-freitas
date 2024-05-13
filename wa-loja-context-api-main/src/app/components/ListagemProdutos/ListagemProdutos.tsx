@@ -1,17 +1,17 @@
+import { useContext } from "react";
 import CardProduto from "../CardProduto/CardProduto";
 import ResumoFavoritos from "../ResumoFavoritos/ResumoFavoritos";
+import { Favoritos_contexto } from "@/app/page";
 
 interface IListagemProdutos {
   produtos: Produto[];
-  favoritos: Produto[];
-  setFavoritos: React.Dispatch<React.SetStateAction<Produto[]>>;
-}
+ }
 
 export default function ListagemProdutos({
-  produtos,
-  favoritos,
-  setFavoritos,
+  produtos
 }: IListagemProdutos) {
+
+  const favoritos_contexto = useContext(Favoritos_contexto);
   return (
     <>
       <h5 className="mb-3">Produtos disponíveis:</h5>
@@ -21,13 +21,11 @@ export default function ListagemProdutos({
           <CardProduto
             key={produto.id}
             produto={produto}
-            setFavoritos={setFavoritos}
-            favoritos={favoritos}
           />
-        ))}
+        ))} 
       </div>
 
-      <ResumoFavoritos favoritos={favoritos} setFavoritos={setFavoritos} />
+      <ResumoFavoritos />
     </>
   );
 }
