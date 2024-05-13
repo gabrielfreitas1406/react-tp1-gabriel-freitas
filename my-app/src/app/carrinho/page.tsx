@@ -14,7 +14,7 @@ function reducer(state: StateCarrinho, action: CarrinhoAction) {
             }));
         case("reduzir_qtd"):
             return (state.map((itemCarrinho)=>{
-                if (itemCarrinho.id === action.id) return {...itemCarrinho, quantidade: itemCarrinho.quantidade-1}
+                if (itemCarrinho.id === action.id && itemCarrinho.quantidade > 0) return {...itemCarrinho, quantidade: itemCarrinho.quantidade-1}
                 return (itemCarrinho);
             }));
         case("remover"):
