@@ -1,15 +1,19 @@
 "use client";
-import ListagemFavoritos from "../components/ListagemFavoritos/ListagemFavoritos";
-import { useState } from "react";
 
-export default function Favoritos() {
-  const [favoritos, setFavoritos] = useState<Produto[] | []>([]);
+import { useState } from "react";
+import ListagemProdutos from "./components/ListagemProdutos/ListagemProdutos";
+import { mockProdutos } from "./mocks/produtos";
+
+export default function App() {
+  const produtos = mockProdutos;
+  const [favoritos, setFavoritos] = useState<Produto[]>([]);
 
   return (
     <main>
       <div className="container p-5">
-        <ListagemFavoritos
-          produtosFavoritos={favoritos}
+        <ListagemProdutos
+          produtos={produtos}
+          favoritos={favoritos}
           setFavoritos={setFavoritos}
         />
       </div>
