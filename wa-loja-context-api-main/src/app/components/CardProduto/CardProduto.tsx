@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useContext } from "react";
-import { Favoritos_contexto } from "@/app/page";
+import { FavoritosContext } from "@/app/state/FavoritosProvider";
 
 interface CardProdutoProps {
   produto: Produto;
@@ -10,7 +10,7 @@ export default function CardProduto({
   produto
 }: CardProdutoProps) {
 
-  const  { favoritos, setFavoritos } = useContext(Favoritos_contexto);
+  const  { favoritos, setFavoritos } = useContext(FavoritosContext);
 
 
   const adicionarAosFavoritos = (produto: Produto) => {
