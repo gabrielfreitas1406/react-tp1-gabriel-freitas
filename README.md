@@ -1,6 +1,6 @@
 ﻿# Entrega dos trabalhos de React do curso Web Academy T3
 
-## Trabalho 2
+## Trabalho 2 de Gerenciamento de estados
 
 Aluno: Gabriel da Silva Freitas
 
