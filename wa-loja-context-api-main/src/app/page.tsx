@@ -1,17 +1,17 @@
 "use client";
 
-import React, { createContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import ListagemProdutos from "./components/ListagemProdutos/ListagemProdutos";
 import { mockProdutos } from "./mocks/produtos";
-import FavoritosProvider from "./state/FavoritosProvider";
+import { FavoritosContext } from "./state/FavoritosProvider";
 
 
 export default function App() {
   const produtos = mockProdutos;
   
+  const {favoritos, setFavoritos} = useContext(FavoritosContext);
 
   return (
-    <FavoritosProvider>
     <main>
       <div className="container p-5">
         <ListagemProdutos
@@ -19,6 +19,5 @@ export default function App() {
         />
       </div>
     </main>
-    </FavoritosProvider>
   );
 }
