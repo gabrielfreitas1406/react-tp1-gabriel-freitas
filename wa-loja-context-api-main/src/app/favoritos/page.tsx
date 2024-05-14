@@ -1,6 +1,6 @@
 "use client";
 import ListagemFavoritos from "../components/ListagemFavoritos/ListagemFavoritos";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { FavoritosContext } from "../state/FavoritosProvider";
 
 export default function Favoritos() {
