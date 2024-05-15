@@ -2,9 +2,10 @@
 import ListagemFavoritos from "../components/ListagemFavoritos/ListagemFavoritos";
 import { useContext } from "react";
 import { FavoritosContext } from "../state/FavoritosProvider";
+import { useFavoritosContext } from "../hooks/useFavoritosContext";
 
 export default function Favoritos() {
-  const {favoritos, setFavoritos} = useContext(FavoritosContext)
+  const {favoritos, setFavoritos} = useFavoritosContext();
 
   return (
     <main>

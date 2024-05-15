@@ -2,6 +2,7 @@ import { useContext } from "react";
 import CardProduto from "../CardProduto/CardProduto";
 import ResumoFavoritos from "../ResumoFavoritos/ResumoFavoritos";
 import { FavoritosContext } from "@/app/state/FavoritosProvider";
+import { useFavoritosContext } from "@/app/hooks/useFavoritosContext";
 
 interface IListagemProdutos {
   produtos: Produto[];
@@ -11,7 +12,7 @@ export default function ListagemProdutos({
   produtos
 }: IListagemProdutos) {
 
-  const {favoritos, setFavoritos} = useContext(FavoritosContext);
+  const {favoritos, setFavoritos} = useFavoritosContext();
   return (
     <>
       <h5 className="mb-3">Produtos disponíveis:</h5>

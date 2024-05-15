@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useContext } from "react";
 import { FavoritosContext } from "@/app/state/FavoritosProvider";
+import { useVerificaProdutoFavorito } from "@/app/hooks/useVerificaProdutoFavorito";
+import { useFavoritosContext } from "@/app/hooks/useFavoritosContext";
 
 interface CardProdutoProps {
   produto: Produto;
@@ -10,7 +12,7 @@ export default function CardProduto({
   produto
 }: CardProdutoProps) {
 
-  const  { favoritos, setFavoritos } = useContext(FavoritosContext);
+  const  { favoritos, setFavoritos } = useFavoritosContext();
 
 
   const adicionarAosFavoritos = (produto: Produto) => {
@@ -18,7 +20,7 @@ export default function CardProduto({
   };
 
 
-  const ehFavorito = favoritos.some((item) => item.id === produto.id);
+  //const ehFavorito = favoritos.some((item) => item.id === produto.id);
 
   return (
     <div className="col">
@@ -38,9 +40,9 @@ export default function CardProduto({
             className="btn btn-success d-block w-100 "
             type="button"
             onClick={() => adicionarAosFavoritos(produto)}
-            disabled={ehFavorito}
+            disabled={useVerificaProdutoFavorito(produto.id)}
           >
-            {ehFavorito ? "Adicionado" : "Adicionar aos favoritos"}
+            {useVerificaProdutoFavorito(produto.id) ? "Adicionado" : "Adicionar aos favoritos"}
           </button>
         </div>
       </div>
